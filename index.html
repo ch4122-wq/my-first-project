@@ -1,24 +1,29 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Welcome to My First Project.">
-  <title>My First Project</title>
-  <style>
-    * { box-sizing: border-box; }
-    body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px; font-family: system-ui, sans-serif; color: #172033; background: #f4f6fb; }
-    main { width: 100%; max-width: 640px; padding: clamp(28px, 6vw, 64px); border: 1px solid #e1e6ef; border-radius: 24px; background: white; }
-    .label { color: #4659b8; font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
-    h1 { margin: 16px 0; font-size: clamp(32px, 7vw, 48px); line-height: 1.1; letter-spacing: -.04em; }
-    p { color: #566174; font-size: 18px; line-height: 1.6; }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Little pauses, good coffee. Explore a playful collection of five fictional neighborhood cafés.">
+<title>The Coffee Edit — Little places, lovely pauses</title>
+<style>
+:root{color-scheme:light;--ink:#2c302b;--muted:#686b61;--paper:#f8f5ed;--line:#deded2;--green:#435342}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif}main{max-width:1120px;margin:auto;padding:34px 40px 30px}nav{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:25px}.brand{font-size:17px;font-weight:700;letter-spacing:-.5px}.brand span{display:inline-grid;place-items:center;width:31px;height:31px;border-radius:50%;background:var(--green);color:white;margin-right:10px}.edition,.eyebrow{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase}.edition{color:var(--muted)}header{position:relative;padding:57px 0 35px;max-width:810px}.eyebrow{color:var(--green)}h1{font-family:Georgia,'Times New Roman',serif;font-size:clamp(44px,6.5vw,76px);font-weight:400;line-height:1.03;letter-spacing:-3px;margin:19px 0 21px}h1 em{color:#73806a;font-weight:400}header p{font-size:16px;line-height:1.65;color:var(--muted);max-width:510px}.toolbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin:7px 0 22px}.toolbar h2{font-size:13px;font-weight:600;margin:0}.toolbar h2 span{color:var(--muted);margin-left:8px;font-weight:400}.search{width:230px;padding:11px 15px;border:1px solid var(--line);border-radius:30px;background:transparent;color:var(--ink);font:inherit;font-size:13px}.search:focus-visible,button:focus-visible{outline:2px solid var(--green);outline-offset:3px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.card{border:1px solid var(--line);border-radius:17px;padding:23px;background:#fffef9;display:flex;flex-direction:column;min-height:245px;transition:transform .2s,box-shadow .2s}.card:hover{transform:translateY(-3px);box-shadow:0 8px 22px #29352c0b}.card-top{display:flex;justify-content:space-between;align-items:center}.number{font-size:11px;letter-spacing:1.5px;color:var(--muted)}.cup{height:49px;width:49px;border-radius:50%;display:grid;place-items:center}.cup svg{width:29px;height:29px;stroke:var(--ink);stroke-width:1.5;fill:none}.peach{background:#f4dfcc}.sage{background:#dce6d4}.blue{background:#dce6ef}.rose{background:#eddbd5}.lavender{background:#e5dff0}.card h3{font:400 27px Georgia,serif;letter-spacing:-.7px;margin:17px 0 6px}.neighborhood{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}.description{font-size:13px;line-height:1.6;color:var(--muted);margin:15px 0 19px;flex:1}.card-bottom{display:flex;align-items:center;justify-content:space-between;gap:8px;border-top:1px solid var(--line);padding-top:14px;font-size:11px}.specialty{font-weight:600}.mood{color:var(--muted)}.note{border:1px dashed #c5c9b9;border-radius:17px;padding:29px;display:flex;flex-direction:column;justify-content:center;background:#eeefe5}.note .star{font-size:30px;color:#73806a}.note h3{font:italic 27px Georgia,serif;line-height:1.15;margin:15px 0 10px}.note p{font-size:13px;line-height:1.7;color:var(--muted);margin:0}.message{grid-column:1/-1;padding:40px;text-align:center;border:1px solid var(--line);border-radius:17px;color:var(--muted)}button{border:1px solid var(--green);border-radius:20px;padding:9px 18px;background:var(--green);color:white;cursor:pointer;margin-top:12px}footer{display:flex;justify-content:space-between;gap:18px;border-top:1px solid var(--line);margin-top:32px;padding-top:19px;font-size:11px;color:var(--muted);line-height:1.6}.status::before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:#aaa;margin-right:7px}.status.live::before{background:#608864}.status.error::before{background:#b77451}@media(max-width:850px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:560px){main{padding:24px 21px}.edition{font-size:9px;letter-spacing:1px}header{padding-top:39px}h1{letter-spacing:-2px}.toolbar{align-items:flex-start;flex-direction:column}.search{width:100%}.grid{grid-template-columns:1fr}.card{min-height:230px}footer{flex-direction:column;gap:5px}}@media(prefers-reduced-motion:reduce){.card{transition:none}.card:hover{transform:none}}
+</style>
 </head>
-<body>
-  <main>
-    <span class="label">Welcome</span>
-    <h1>My First Project</h1>
-    <p>A new beginning. More coming soon.</p>
-  </main>
-</body>
-</html>
+<body><main>
+<nav aria-label="Site identity"><div class="brand"><span aria-hidden="true">c.</span>the coffee edit</div><div class="edition">A little collection / 01</div></nav>
+<header><div class="eyebrow">Good coffee. A little curiosity.</div><h1>Little places,<br><em>lovely pauses.</em></h1><p>A handful of imagined neighborhood cafés, each with its own flavor. Find a little inspiration for your next coffee break.</p></header>
+<section aria-labelledby="collection-heading"><div class="toolbar"><h2 id="collection-heading">The collection <span id="count"></span></h2><input type="search" class="search" id="search" aria-label="Search cafés" placeholder="Find your kind of café…" disabled></div><div class="grid" id="collection" aria-busy="true"><p class="message" role="status">Brewing the collection…</p></div></section>
+<footer><span class="status" id="status" role="status" aria-live="polite">Connecting to the collection</span><span>Fictional places. Real coffee-break energy.</span></footer>
+</main>
+<script>
+'use strict';
+const SUPABASE_URL = 'https://htzleuxpqkynqbzarbge.supabase.co';
+const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_Y8tDNPuYBCnS_ukjjJn7tQ_yHOMLzmo';
+const grid=document.querySelector('#collection'),status=document.querySelector('#status'),search=document.querySelector('#search'),count=document.querySelector('#count');
+let cafes=[];
+const cup='<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 12h16v7a8 8 0 0 1-16 0zM23 13h2a4 4 0 0 1 0 8h-2M5 29h22M12 4v4M18 2v6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+function el(tag,className,text){const e=document.createElement(tag);e.className=className;e.textContent=text;return e;}
+function render(){const q=search.value.trim().toLowerCase();const visible=cafes.filter(c=>[c.name,c.neighborhood,c.specialty,c.mood].join(' ').toLowerCase().includes(q));grid.replaceChildren();count.textContent=visible.length+' / '+cafes.length;for(const c of visible){const card=el('article','card',''),top=el('div','card-top',''),icon=el('span','cup '+(['peach','sage','blue','rose','lavender'].includes(c.color)?c.color:'sage'),'');icon.innerHTML=cup;top.append(el('span','number','CAFÉ '+String(c.id).padStart(2,'0')),icon);const bottom=el('div','card-bottom','');bottom.append(el('span','specialty',c.specialty),el('span','mood',c.mood));card.append(top,el('h3','',c.name),el('span','neighborhood',c.neighborhood),el('p','description',c.description),bottom);grid.append(card);}if(!visible.length){grid.append(el('p','message',cafes.length?'No cafés match. Try another search.':'The collection is empty. Check back soon.'));}if(!q&&cafes.length){const note=el('aside','note','');note.append(el('span','star','✳'),el('h3','','Make a little room for slow.'),el('p','','Some of the best moments happen between the things on your to-do list. This one is yours.'));grid.append(note);}}
+async function load(){grid.setAttribute('aria-busy','true');status.className='status';status.textContent='Connecting to the collection';try{const response=await fetch(SUPABASE_URL+'/rest/v1/cafes?select=id,name,neighborhood,specialty,description,mood,color&order=id.asc',{headers:{apikey:SUPABASE_PUBLISHABLE_KEY},signal:AbortSignal.timeout(15000)});if(!response.ok)throw new Error('Collection request failed');const data=await response.json();if(!Array.isArray(data)||data.some(c=>!Number.isInteger(c.id)||['name','neighborhood','specialty','description','mood','color'].some(k=>typeof c[k]!=='string')))throw new Error('Unexpected collection data');cafes=data;search.disabled=false;render();status.textContent='Live collection from Supabase';status.className='status live';}catch(error){grid.replaceChildren();const box=el('div','message','');box.append(el('p','','The coffee collection is taking a little longer. Please try again.'));const retry=el('button','','Try again');retry.type='button';retry.addEventListener('click',load);box.append(retry);grid.append(box);status.textContent='Unable to connect to the collection';status.className='status error';}finally{grid.setAttribute('aria-busy','false');}}
+search.addEventListener('input',render);load();
+</script></body></html>
