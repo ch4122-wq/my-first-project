@@ -1,1 +1,32 @@
-
+{
+  "rewrites": [
+    {
+      "source": "/members",
+      "destination": "/api/app?route=members"
+    },
+    {
+      "source": "/auth/callback",
+      "destination": "/api/app?route=callback"
+    },
+    {
+      "source": "/auth/signout",
+      "destination": "/api/app?route=signout"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    }
+  ],
+  "outputDirectory": "public"
+}
