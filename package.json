@@ -1,1 +1,14 @@
-
+{
+  "name": "the-coffee-edit",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "build": "node --check api/app.js && mkdir -p public && cp index.html public/index.html"
+  },
+  "dependencies": {
+    "@supabase/ssr": "^0.7.0",
+    "@supabase/supabase-js": "^2.57.0",
+    "cookie": "^1.0.2"
+  }
+}
