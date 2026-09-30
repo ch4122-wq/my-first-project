@@ -28,5 +28,10 @@
       ]
     }
   ],
-  "outputDirectory": "public"
+  "outputDirectory": "public",
+  "functions": {
+    "api/app.js": {
+      "maxDuration": 120
+    }
+  }
 }
