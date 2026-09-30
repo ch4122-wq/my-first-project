@@ -109,7 +109,7 @@ export async function handle(req, res, { makeClient = client, generate = generat
       const {data:imageId,error:saveError}=await supabase.rpc('save_caption_generation',{job_id:job,image_data:body.image,image_description:result.description,caption_texts:result.captions});
       if(saveError) return json(res,503,{error:'The captions could not be saved. Please try again.'});
       return json(res,201,{imageId});
-    }catch{ return json(res,502,{error:'The AI service could not finish this image. Please try again later or choose another photo.'}); }
+    }catch(err){ console.error('Caption generation failed',JSON.stringify({name:err.name,message:String(err.message).replace(/(?:AQ\.|AIza)[A-Za-z0-9_.-]+/g,'[redacted]').slice(0,200)})); return json(res,502,{error:'The AI service could not finish this image. Please try again later or choose another photo.'}); }
   }
   const voteTokenName = '__Host-caption-csrf';
   let notice = '';
@@ -156,7 +156,7 @@ export function validateImage(dataUrl) {
 export async function generateCaptionChain(image, {fetcher=fetch,apiKey=process.env.GEMINI_API_KEY,model=process.env.GEMINI_MODEL || 'gemini-3.8-flash'}={}) {
   if(!apiKey) throw new Error('Caption generation is not configured yet.');
   async function call(parts,system,json=false) {
-    const response=await fetcher(`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`,{method:'POST',headers:{'Content-Type':'application/json','x-goog-api-key':apiKey},signal:AbortSignal.timeout(45000),body:JSON.stringify({systemInstruction:{parts:[{text:system}]},contents:[{role:'user',parts}],generationConfig:{maxOutputTokens:1600,...(json?{responseMimeType:'application/json',responseSchema:{type:'ARRAY',items:{type:'STRING'},minItems:3,maxItems:3}}:{})}})});
+    const response=await fetcher(`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`,{method:'POST',headers:{'Content-Type':'application/json','x-goog-api-key':apiKey},signal:AbortSignal.timeout(45000),body:JSON.stringify({systemInstruction:{parts:[{text:system}]},contents:[{role:'user',parts}],generationConfig:{maxOutputTokens:4096,thinkingConfig:{thinkingLevel:'low'},...(json?{responseMimeType:'application/json',responseSchema:{type:'ARRAY',items:{type:'STRING'},minItems:3,maxItems:3}}:{})}})});
     if(!response.ok) {
       const failure=await response.json().catch(()=>({}));
       console.error('Gemini request failed',JSON.stringify({httpStatus:response.status,apiStatus:failure.error?.status,model}));
