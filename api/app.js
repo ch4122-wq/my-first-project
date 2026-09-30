@@ -153,10 +153,11 @@ export function validateImage(dataUrl) {
   if(actual!==match[1]) throw new Error('The file contents do not match its image type.');
   return {mimeType:actual,data:match[2],bytes};
 }
-export async function generateCaptionChain(image, {fetcher=fetch,apiKey=process.env.GEMINI_API_KEY,model=process.env.GEMINI_MODEL || 'gemini-3.8-flash'}={}) {
+export async function generateCaptionChain(image, {fetcher=fetch,apiKey=process.env.GEMINI_API_KEY,model=process.env.GEMINI_MODEL || 'gemini-3.5-flash-lite'}={}) {
   if(!apiKey) throw new Error('Caption generation is not configured yet.');
-  async function call(parts,system,json=false) {
+  async function call(parts,system,json=false,attempt=0) {
     const response=await fetcher(`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`,{method:'POST',headers:{'Content-Type':'application/json','x-goog-api-key':apiKey},signal:AbortSignal.timeout(45000),body:JSON.stringify({systemInstruction:{parts:[{text:system}]},contents:[{role:'user',parts}],generationConfig:{maxOutputTokens:4096,thinkingConfig:{thinkingLevel:'low'},...(json?{responseMimeType:'application/json',responseSchema:{type:'ARRAY',items:{type:'STRING'},minItems:3,maxItems:3}}:{})}})});
+    if([500,502,503,504].includes(response.status) && attempt===0) { await new Promise(resolve=>setTimeout(resolve,1000)); return call(parts,system,json,1); }
     if(!response.ok) {
       const failure=await response.json().catch(()=>({}));
       console.error('Gemini request failed',JSON.stringify({httpStatus:response.status,apiStatus:failure.error?.status,model}));
