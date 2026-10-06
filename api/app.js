@@ -49,6 +49,10 @@ function page(title, body, google = false) {
 function json(res,status,value){res.statusCode=status;res.setHeader('Content-Type','application/json');res.end(JSON.stringify(value));}
 function send(res, status, title, body, google = false) { res.statusCode = status; res.setHeader('Content-Type', 'text/html; charset=utf-8'); res.end(page(title, body, google)); }
 function gate(req, res, origin) {
+  // Deployment URLs change on every release; begin OAuth on its registered origin
+  // so both the nonce and the resulting session cookie belong to that same host.
+  const signInOrigin = 'https://my-first-project-gamma-ashy.vercel.app';
+  if (origin !== signInOrigin) return redirect(res, signInOrigin + '/members');
   const rawNonce = randomBytes(32).toString('hex');
   setCookie(res, nonceName, rawNonce, { maxAge: 600, sameSite: 'none' });
   const hashedNonce = createHash('sha256').update(rawNonce).digest('hex');
